@@ -2,17 +2,19 @@
 <html>
   <head>
     <title>Hue Light Control</title>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, width=device-width">
     <style>
       html {height:100%;}
       body {background:linear-gradient(-45deg, #358,#088) fixed; margin:0; font-family:"HelveticaNeue-UltraLight",sans-serif-thin,sans-serif; height:100%;}
-      table  {background:rgba(0,0,0,.2); color:rgba(255,255,255,.7); font-size:50px; letter-spacing:2px; width:98%; margin:1% 1% 0; border-spacing:0}
-      svg  {height:100px; width:100px; opacity:.2;}
+      table  {background:rgba(0,0,0,.2); color:rgba(255,255,255,.7); font-size:25px; letter-spacing:1px; width:98%; margin:1% 1% 0; border-spacing:0; table-layout:fixed;}
+      svg  {height:50px; width:50px; opacity:.2; margin-top:5px;}
       span {margin-left:1%}
-      .bulb, .state {width:100px; border-left:2px solid rgba(255,255,255,.1); padding:1%; text-align:center}
+      .bulb, .state {width:50px; min-width:50px; border-left:1px solid rgba(255,255,255,.1); padding:1%; text-align:center;}
+      .name {min-width:50px; white-space:nowrap;}
       .state:after {content:"Off";}
       .true .state:after {content:"On";}
       .true svg {opacity:1;}
-      #head {font-size:100px; padding:1%; letter-spacing:2px; text-align: center; color:rgba(0,0,0,.5);}
+      #head {font-size:50px; padding:1%; letter-spacing:1px; text-align: center; color:rgba(0,0,0,.5);}
       #item {display:none;}
     </style>
   </head>
@@ -51,7 +53,7 @@
             item.setAttribute("id",n);
             item.setAttribute("class",l[n].state.on)
             item.querySelector(".name").innerHTML = l[n].name;
-            item.querySelector(".light").style = "fill:hsl("+h+","+s+"%,"+v+"%)";
+            item.querySelector(".light").setAttribute("fill","hsl("+h+","+s+"%,"+v+"%)");
             item.onclick = function() {
               id = this.id;
               l[id].state.on = !l[id].state.on;
